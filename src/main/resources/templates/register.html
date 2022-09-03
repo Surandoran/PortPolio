@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .main {
+            width: 700px;
+            height: 700px;
+            margin: auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 60px;
+        }
+
+        input {
+            display: inline-block;
+            width: 400px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 470px;
+            height: 400px;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 70px;
+            background-color: cyan;
+            border: 1px solid;
+        }
+    </style>
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="main">
+        <form method="post">
+            <label for="writer">작성자 :</label>
+            <input type="text" name="writer" id="writer">
+            <label for="title">제목 :</label>
+            <input type="text" name="title" id="title">
+            <label for="content">내용 :</label>
+            <textarea name="content" id="content"></textarea>
+            <button type="submit">등록</button>
+        </form>
+    </div>
+
+</div>
+</html>
