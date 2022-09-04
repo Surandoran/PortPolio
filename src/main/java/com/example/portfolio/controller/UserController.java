@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -36,7 +37,7 @@ public class UserController {
 
     @GetMapping("/user/new")
     public String createForm(Model model) {
-        model.addAttribute("useraccount", new UserAccount());
+        model.addAttribute("USERACCOUNT", new UserAccount());
 
         return "sing-up";
     }
@@ -46,20 +47,18 @@ public class UserController {
         try {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             UserAccount userAccount = new UserAccount();
+            userAccount.setUserid(userEntity.getId());
             userAccount.setEmail(userEntity.getEmail());
             userAccount.setPw(passwordEncoder.encode(userEntity.getPw()));
             userAccount.setName(userEntity.getName());
             userAccount.setPhone(userEntity.getPhone());
             userAccount.setAddr(userEntity.getAddr());
 
-            System.out.println(userAccount);
-            userService.save(userAccount);
+            userRepository.save(userAccount);
 
             if(userAccount.getUserid() != null) {
-                System.out.println(userAccount);
-                return "redirect:index";
+                return "redirect:login";
             } else {
-                System.out.println(userAccount);
                 return "/user/new";
             }
         } catch (Exception e) {
@@ -108,9 +107,16 @@ public class UserController {
         out.print(jso.toString());
     }
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public String login123() {
         return "login";
+    }
+
+    @GetMapping("/user/list")
+    public String list(Model model) {
+        List<UserAccount> users = userService.findMembers();
+        model.addAttribute("users", users);
+        return "/userlist";
     }
 
 }

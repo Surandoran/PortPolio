@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Repository
 @Getter @Setter
 @ToString
-@Entity
+@Entity(name = "USERACCOUNT")
 @SequenceGenerator(
         name = "USERACCOUNT_SEQ_GENERATOR",
         sequenceName = "useraccount_userid",

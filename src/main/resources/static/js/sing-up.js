@@ -1,46 +1,35 @@
-function fn_submitChk() {
-    <!-- var idChk_val = $("#idChk").val();-->
-    if (regForm.email.value == "") {
-        regForm.email.focus();
-        alert("이메일을 입력해주세요")
+function fn_submitChk () {
+    if (regform.pw.value != regform.confirm_pwd.value) {
+        regform.pw.focus();
+        alert("비밀번호가 일치하지 않습니다.");
         return false;
     }
-    if (regForm.pw.value == "") {
-        regForm.pw.focus();
-        alert("비밀번호를 입력해주세영");
+    if (regform.name.value == "") {
+        regform.name.focus();
+        alert("이름을 입력해주세요.");
         return false;
     }
-    if (regForm.pw.value != regForm.confirm_password.value) {
-        regForm.confirm_password.focus();
-        alert("비밀번호가 일치하지 않습니다! 확인해주세영!");
-        return false;
-    }
-    if (regForm.name.value == "") {
-        regForm.name.focus();
-        alert("이름을 입력해주세요");
-        return false;
-    }
-    if (regForm.phone.value == "") {
-        regForm.phone.focus();
+    if (regform.phone.value == "") {
+        regform.phone.focus();
         alert("휴대폰 번호를 입력해주세요");
         return false;
     }
-    if (regForm.addr.value == "") {
-        regForm.addr.focus();
-        alert("주소를 입력해주세요");
+    if (regform.useremail.value == "") {
+        regform.useremail.focus();
+        alert("이메일을 입력해주세요.");
         return false;
     }
-    if ($('#emailChk').val == "N") {
-        regForm.username.focus();
-        alert("아이디 중복 확인이 필요합니당");
+    if (regform.emailChk.value == "N") {
+        regform.emailChk.focus();
+        alert("아이디 중복확인이 필요합니다.");
         return false;
     }
-}
+};
 
 function fn_emailChk() {
     // request 파라미터에 userid 를 넣어서 서버단으로 보냄
     var params = {
-        username: $('#email').val()
+        username: $('#useremail').val()
     }
 
     $.ajax({
@@ -67,5 +56,5 @@ function fn_emailChk() {
                 alert("아이디는입력하셔야졍;;");
             }
         }
-    })
+    });
 }

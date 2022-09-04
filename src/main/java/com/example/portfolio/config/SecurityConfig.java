@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll() // 설정된 url은 인증되지 않더라도 누구든 접근 가능
                 .anyRequest().authenticated()// 위 페이지 외 인증이 되어야 접근가능(ROLE에 상관없이)
                 .and()
-                .formLogin().loginPage("/login")  // 접근이 차단된 페이지 클릭시 이동할 url
+                .formLogin().loginPage("/user/login")  // 접근이 차단된 페이지 클릭시 이동할 url
                 .loginProcessingUrl("/") // 로그인시 맵핑되는 url
                 .usernameParameter("userid")      // view form 태그 내에 로그인 할 id 에 맵핑되는 name ( form 의 name )
                 .passwordParameter("pw")      // view form 태그 내에 로그인 할 password 에 맵핑되는 name ( form 의 name )

@@ -34,7 +34,8 @@ public class UserService implements UserDetailsService {
                 });
     }
 
-    public Long save(UserAccount userAccount) {
+    //회원가입
+    public Long join(UserAccount userAccount) {
         validateDuplicateMember(userAccount);
         userRepository.save(userAccount);
         return userAccount.getUserid();

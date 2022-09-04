@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .d1 {
+            position: relative;
+            text-align: center;
+            width: 150px;
+            left: 150px;
+        }
+
+        #t1 {
+            position: relative;
+            width: 1500px;
+            left: 150px;
+        }
+    </style>
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script"></th:block>
+
+<div layout:fragment="content">
+    <!--   여기에 메인 코드를 넣어주세요 -->
+    <div class="d1"><h2>Manage Users</h2></div>
+    <div class="d1">
+        <a class="h3" th:href="@{/user/new}">Add New User</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <table class="table table-bordered" id="t1">
+        <thead class="thead-dark">
+        <tr>
+            <th>코드번호</th>
+            <th>이메일</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>주소</th>
+            <th>옵션</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td th:text="${user.userid}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.addr}"></td>
+                <td>
+                    <a class="h4 mr-3" th:href="@{'/members/edit/' + ${member.id}}">Edit</a>
+                    <a class="h4" th:href="@{'/members/delete/' + ${member.id}}">Delete</a>
+                </td>
+            </tr>
+
+        </th:block>
+        </tbody>
+    </table>
+
+</div>
+</html>

@@ -6,7 +6,7 @@
 <head th:fragment="configFragment">
     <meta charset="UTF-8" />
     <!-- 공통으로 쓰이는 css파일을 넣는다.-->
-<!--    <link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">-->
+    <link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
 
     <!-- 컨텐츠페이지의 CSS 영역이 들어감 -->
     <th:block layout:fragment="css">
@@ -14,6 +14,8 @@
     </th:block>
 
     <!-- 공통으로 쓰이는 js 파일을 넣는다.-->
+    <script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+
     <!-- 컨텐츠페이지의 스크립트 영역이 들어감 -->
     <th:block layout:fragment="script">
 

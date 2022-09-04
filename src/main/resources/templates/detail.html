@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .main {
+            width: 700px;
+            height: 700px;
+            margin: auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 60px;
+        }
+
+        input {
+            display: inline-block;
+            width: 400px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 470px;
+            height: 400px;
+        }
+
+        #update {
+            text-align: center;
+            display: inline-block;
+            border: 1px solid;
+            width: 80px;
+            height: 30px;
+            background-color: moccasin;
+            text-decoration: none;
+            line-height: 30px;
+        }
+
+        #delete {
+            text-align: center;
+            display: inline-block;
+            border: 1px solid;
+            width: 80px;
+            height: 30px;
+            background-color: lightpink;
+            text-decoration: none;
+            line-height: 30px;
+        }
+
+    </style>
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content">
+    <div class="main">
+        <label for="writer">작성자 :</label>
+        <input type="text" name="writer" id="writer" th:value="${board.writer}" dlsabled><br>
+        <label for="title">제목 :</label>
+        <input type="text" name="title" id="title" th:value="${board.title}" dlsabled><br>
+        <label for="content">작성자 :</label>
+        <textarea name="content" id="content" th:text="${board.content}" dlsabled></textarea>
+        <a th:href="@{/board/update/{idx}(idx=${board.idx})}" id="update">수정</a>
+        <a th:href="@{/board/delete/{idx}(idx=${board.idx})}" id="delete">삭제</a>
+    </div>
+</div>
+</html>
