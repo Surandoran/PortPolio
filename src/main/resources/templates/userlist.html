@@ -46,16 +46,16 @@
         </thead>
         <tbody>
 
-        <th:block th:each="user : ${users}">
+        <th:block th:each="users : ${users}">
             <tr>
-                <td th:text="${user.userid}"></td>
-                <td th:text="${user.email}"></td>
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.phone}"></td>
-                <td th:text="${user.addr}"></td>
+                <td th:text="${users.userid}"></td>
+                <td th:text="${users.email}"></td>
+                <td th:text="${users.name}"></td>
+                <td th:text="${users.phone}"></td>
+                <td th:text="${users.addr}"></td>
                 <td>
-                    <a class="h4 mr-3" th:href="@{'/members/edit/' + ${member.id}}">Edit</a>
-                    <a class="h4" th:href="@{'/members/delete/' + ${member.id}}">Delete</a>
+                    <a class="h4 mr-3" th:href="@{'/user/edit/' + ${users.userid}}">Edit</a>
+                    <a class="h4" th:href="@{'/user/delete/' + ${users.userid}}">Delete</a>
                 </td>
             </tr>
 

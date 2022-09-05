@@ -21,7 +21,7 @@ public class BoardService {
     }
 
     public Page<Board> list(int page) {
-        return boardRepository.findAll(PageRequest.of(page, 3, Sort.by(Sort.Direction.DESC, "idx")));
+        return boardRepository.findAll(PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "idx")));
     }
 
     public Board detail(int idx) {

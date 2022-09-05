@@ -17,13 +17,13 @@
     <form action="/user/new" method="post" id="regform" onsubmit="return fn_submitChk();">
 
         <input type="hidden" th:name="${userid}">
-        <table border=1>
+        <table border=1 class="table table-bordered">
             <tr>
                 <td><label>이메일</label></td>
                 <td><input type="email" name="email" id="useremail"></td>
                 <td colspan="3">
-                    <button type="button" id="emailChk" onclick="fn_emailChk()" value="N">중복확인</button>
-                </td>x
+                    <button class="btn btn-primary" type="button" id="emailChk" onclick="fn_emailChk()" value="N">중복확인</button>
+                </td>
             </tr>
             <tr>
                 <td><label>비밀번호</label></td>
@@ -49,12 +49,12 @@
                 <td><input name="addr" type="text" id="member_post"/></td>
                 <td><input name="addr" type="text" id="member_roadaddr"/></td>
                 <td>
-                    <button type="button">주소검색</button>
+                    <button class="btn btn-primary" type="button">주소검색</button>
                 </td>
             </tr>
             <tr>
                 <td colspan="5">
-                <button type="submit">회원가입</button>
+                <button class="btn btn-primary" type="submit">회원가입</button>
                 </td>
             </tr>
         </table>

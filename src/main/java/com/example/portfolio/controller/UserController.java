@@ -5,15 +5,14 @@ import com.example.portfolio.dto.UserAccount;
 import com.example.portfolio.entity.UserEntity;
 import com.example.portfolio.repository.UserRepository;
 import com.example.portfolio.service.UserService;
+import com.example.portfolio.service.exception.UserNotFoundException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -108,15 +107,54 @@ public class UserController {
     }
 
     @GetMapping("/user/login")
-    public String login123() {
+    public String login(Model model) {
+
+        List<UserAccount> userAccount = userService.findMembers();
+        model.addAttribute("user", userAccount);
+
         return "login";
     }
+
+    @PostMapping("/user/login")
+    public String login1() {
+        return "redirect:/";
+    }
+
 
     @GetMapping("/user/list")
     public String list(Model model) {
         List<UserAccount> users = userService.findMembers();
         model.addAttribute("users", users);
-        return "/userlist";
+        return "userlist";
+    }
+
+    @GetMapping("/user/edit/{userid}")
+    public String showEditForm(@PathVariable("userid") Long userid, Model model, RedirectAttributes ra) {
+        try {
+            UserAccount users = userService.get(userid);
+            if(userid == users.getUserid()) {
+                userService.deleteById(userid);
+            } else {
+                userService.get(userid);
+            }
+            model.addAttribute("users", users);
+            model.addAttribute("pageTitle", "Edit User (ID: " + users + ")");
+            return "sing-up";
+        } catch (UserNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/user/list";
+        }
+    }
+
+    @GetMapping("/user/delete/{userid}")
+    public String deleteUser(@PathVariable("userid") Long userid, RedirectAttributes ra) {
+        try {
+            userService.deleteById(userid);
+            ra.addFlashAttribute("message", "The user ID " + userid + "has been deleted.");
+        } catch (Exception e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/user/list";
     }
 
 }

@@ -7,28 +7,11 @@
 <!-- index.html 고유 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
-        .main {
-            width: 700px;
-            height: 700px;
-            margin: auto;
-            margin-top: 100px;
+        #t1 {
+            position: relative;
+            width: 1500px;
+            left: 150px;
         }
-
-        table {
-            text-align: center;
-        }
-
-        .register {
-            text-align: center;
-            display: inline-block;
-            border: 1px solid;
-            width: 80px;
-            height: 30px;
-            background-color: mistyrose;
-            text-decoration: none;
-            line-height: 30px;
-        }
-
     </style>
 </th:block>
 <!-- index.html 고유 스크립트 추가 -->
@@ -39,38 +22,39 @@
 <div layout:fragment="content">
 
     <div class="main">
-        <a href="/board/register" class="register">글 쓰기</a>
-        <table>
+        <table class="table table-bordered" id="t1">
             <colgroup>
                 <col width="50">
                 <col width="300">
                 <col width="150">
                 <col width="200">
             </colgroup>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
-                </tr>
+            <thead class="thead-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+            </tr>
             </thead>
             <tbody>
-                <tr th:each="board : ${board}">
-                    <td th:text="${board.idx}"></td>
-                    <td><a th:href="@{/board/detail/{idx}(idx=${board.idx})}" th:text="${board.title}"></a></td>
-                    <td th:text="${board.writer}"></td>
-                    <td th:text="${#temporals.format(board.createAt, 'yyyy-MM-dd HH:mm')}"></td>
-                </tr>
+            <tr th:each="board : ${board}">
+                <td th:text="${board.idx}"></td>
+                <td><a th:href="@{/board/detail/{idx}(idx=${board.idx})}" th:text="${board.title}"></a></td>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${#temporals.format(board.createAt, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
             </tbody>
         </table>
-
-        <div class="pagination">
-            <ul>
-                <li th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
-                    <a th:href="@{/board/list(page=${pageStat.index})}" th:text="${pageStat.index + 1}"></a>
-                </li>
-            </ul>
+        <div style="position: relative; left:1580px;">
+            <a  href="/board/register" class="btn btn-primary">글 쓰기</a>
+        </div>
+        <div class="pagination" style="position: relative; left: 800px;">
+            <table>
+                <td th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
+                    <a class="btn btn-primary" th:href="@{/board/list(page=${pageStat.index})}" th:text="${pageStat.index + 1}"></a>
+                </td>
+            </table>
         </div>
 
     </div>

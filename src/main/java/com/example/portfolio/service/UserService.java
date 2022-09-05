@@ -3,6 +3,7 @@ package com.example.portfolio.service;
 import com.example.portfolio.dto.Role;
 import com.example.portfolio.dto.UserAccount;
 import com.example.portfolio.repository.UserRepository;
+import com.example.portfolio.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

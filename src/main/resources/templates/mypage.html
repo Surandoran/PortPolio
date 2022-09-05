@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layout/layout"
+>
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        img {
+            width: 500px;
+            height: 600px;
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .content {
+            position: relative;
+            left: 700px;
+            bottom: 600px;
+            font-size: 20px;
+        }
+        .text {
+            margin-top: 50px;
+        }
+        .hit {
+            color: red;
+        }
+        .Famous {
+            margin-top: 50px;
+        }
+    </style>
+</th:block>
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content">
+
+    <h1><strong>About Me</strong></h1>
+    <img src="img/main.jpg">
+    <div class="content">
+        <h3><strong>"포기하지 않는 개발자"</strong></h3>
+        <p class="text">
+            처음 프로그래밍언어를 접한건 20살 이었습니다. 수성대학교를 다니며 C언어를 처음 접하고 컴퓨터의 기본적인 <br>
+            동작 원리를 알게되었습니다. 하지만 개인사정으로 인해 요리를 시작하게 되었고 창업도 해보았습니다. <br>
+            그 이후 매번 생각만 하던 웹 페이지를 직접 만들고 싶어 정보처리산업기사 취득과정인 국비수업을 들으며 <br>
+            제가 생각만 하던것을 실제로 만들어보니 정말 새롭고 재밌게 느껴졌습니다. 그리하여 저는 제 인생의 2막으로<br>
+            <strong class="hit">백엔드 개발자</strong>로서 시작해 보려 합니다. 더 나은 세상과 기술로 나아가고<br>
+            장애물을 만나더라도 해결할 때까지 <strong>포기하지 않는 정신</strong>은 저의 가장 큰 장점입니다.<br>
+            많이 배우고 노력하여 성장하겠습니다.<br>
+            <br>
+            <strong class="Famous">
+            "많은 인생의 실패자들이"<br>
+            "포기할 때"<br>
+            "자신이 얼마나 성공에"<br>
+            "가까이 있었는지를 모른다"<br>
+            </strong>
+            <br>
+            - 토마스 A. 에디슨 -
+        </p>
+    </div>
+
+
+</div>
+</html>

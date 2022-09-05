@@ -26,5 +26,6 @@ public class UserAccount {
     @Column(name = "name") private String name;
     @Column(name = "phone") private String phone;
     @Column(name = "addr") private String addr;
+    @Column(name = "Role") private Role role;
 
 }

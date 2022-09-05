@@ -1,0 +1,12 @@
+header,footer{
+    background-color: #343a40;
+    color: white;
+    font-family: cursive;
+}
+footer {
+    top: 0;
+}
+
+body {
+    margin: 0;
+}

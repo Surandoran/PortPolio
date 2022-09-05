@@ -2,11 +2,37 @@
 <html lagn="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:fragment="headerFragment">
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USERACCOUNT</title>
+    <title>SON</title>
+
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a th:href="@{/}" class="nav-link px-2 link-secondary" style="color: white">홈으로</a></li>
+                    <li><a th:href="@{/mypage}" class="nav-link px-2 link-secondary" style="color: white">나의 소개</a></li>
+                    <li><a th:href="@{/myskills}" class="nav-link px-2 link-dark" style="color: white">나의 스킬</a></li>
+                    <li><a th:href="@{/board/list}" class="nav-link px-2 link-secondary" style="color: white">게시판</a></li>
+                    <li><a href="https://github.com/Surandoran" class="nav-link px-2 link-dark" style="color: white">Github</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+
+                <div class="dropdown text-end">
+                    <a style="color: white" th:href="@{/user/new}">회원가입</a>
+                    <a style="color: white" th:href="@{/user/login}">로그인</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
 </header>
 </html>
